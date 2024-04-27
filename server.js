@@ -2,22 +2,7 @@ import express from 'express';
 import cors from 'cors';
 const app = express();
 
-const allowedOrigins = ['https://your-vercel-app.vercel.app', 'https://your-custom-domain.com'];
-
-// CORS options
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-};
-
-// Enable CORS middleware with custom options
-app.use(cors(corsOptions));
-
+app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 app.get('/api/laws', async (req, res) => {
